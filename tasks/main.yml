@@ -1,8 +1,21 @@
 ---
 # tasks file for inverso.docker
 
-- name: ensure docker-cli plugin is installed
+- name: ensure docker-compose plugin is installed
   file:
     src: '/usr/local/bin/docker-compose'
     dest: '/usr/libexec/docker/cli-plugins/docker-compose'
     state: link
+
+# there is currently no bash completion for docker-compose vv2.x
+#- name: ensure docker-compose bash completion is installed
+#  block:
+#    - name: get current installed compose version
+#      command: docker-compose version --short
+#      changed_when: false
+#      register: _reg_compose
+#
+#    - name: install docker-compose bash completion
+#      get_url:
+#        url: 'https://raw.githubusercontent.com/docker/compose/{{ _reg_compose.stdout }}/contrib/completion/bash/docker-compose'
+#        dest: '/etc/bash_completion.d/docker-compose'
