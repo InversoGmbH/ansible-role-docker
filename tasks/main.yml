@@ -6,6 +6,7 @@
     src: '/usr/local/bin/docker-compose'
     dest: '/usr/libexec/docker/cli-plugins/docker-compose'
     state: link
+  when: docker_install_compose in [true]
 
 # there is currently no bash completion for docker-compose vv2.x
 #- name: ensure docker-compose bash completion is installed
@@ -19,3 +20,4 @@
 #      get_url:
 #        url: 'https://raw.githubusercontent.com/docker/compose/{{ _reg_compose.stdout }}/contrib/completion/bash/docker-compose'
 #        dest: '/etc/bash_completion.d/docker-compose'
+#  when: docker_install_compose in [true]
