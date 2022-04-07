@@ -1,0 +1,8 @@
+---
+# tasks file for inverso.docker
+
+- name: ensure docker-cli plugin is installed
+  file:
+    src: '/usr/local/bin/docker-compose'
+    dest: '/usr/libexec/docker/cli-plugins/docker-compose'
+    state: link
