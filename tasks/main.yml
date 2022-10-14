@@ -8,6 +8,11 @@
     state: link
   when: docker_install_compose in [true]
 
+- name: ensure ansible-docker dependencies are present
+  pip:
+    name: docker-py
+    state: present
+
 # there is currently no bash completion for docker-compose vv2.x
 #- name: ensure docker-compose bash completion is installed
 #  block:
