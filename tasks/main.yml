@@ -12,6 +12,8 @@
   pip:
     name: docker-py
     state: present
+  when:
+    - ansible_distribution_major_version | int > 7
 
 # there is currently no bash completion for docker-compose vv2.x
 #- name: ensure docker-compose bash completion is installed
