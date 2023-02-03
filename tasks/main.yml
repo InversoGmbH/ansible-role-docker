@@ -1,13 +1,6 @@
 ---
 # tasks file for inverso.docker
 
-- name: ensure docker-compose plugin is installed
-  file:
-    src: '/usr/local/bin/docker-compose'
-    dest: '/usr/libexec/docker/cli-plugins/docker-compose'
-    state: link
-  when: docker_install_compose in [true]
-
 - name: ensure ansible-docker dependencies are present
   pip:
     name: docker-py
